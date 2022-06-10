@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "usefulsunflower:items/seed_pouch_full"
+  }
+}

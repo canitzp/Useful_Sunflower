@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "usefulsunflower:block/growing_sunflower_stem0"
+    },
+    "age=1": {
+      "model": "usefulsunflower:block/growing_sunflower_stem1"
+    },
+    "age=2": {
+      "model": "usefulsunflower:block/growing_sunflower_stem2"
+    },
+    "age=3": {
+      "model": "usefulsunflower:block/growing_sunflower_stem3"
+    }
+  }
+}

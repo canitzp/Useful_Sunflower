@@ -1,0 +1,18 @@
+{
+  "itemGroup.usefulsunflower": "Useful Sunflower",
+
+  "block.usefulsunflower.squeezer": "Squeezer",
+  "block.usefulsunflower.squeezer.desc": "Right-Click with Seed Pouch or Sunflower Head to add seeds. Crouch/Sneak + Right-Click to change the recipe.",
+  "block.usefulsunflower.squeezer.overlay.seeds_remaining": "Seeds remaining: %d",
+  "block.usefulsunflower.squeezer.overlay.clicks_remaining": "Clicks remaining: %d",
+  "block.usefulsunflower.squeezer.overlay.recipe": "Recipe: %s",
+  "item.usefulsunflower.sunflower_oil": "Sunflower Oil (500ml / 16.9fl oz)",
+  "item.usefulsunflower.seed_pouch": "Seed Pouch",
+  "item.usefulsunflower.seed_pouch.desc.general": "Right click on Sunflowers to get the Seeds. Replants a new sunflower. Sneak to cut the whole plant.",
+  "item.usefulsunflower.seed_pouch.desc.seeds_contained": "Seeds: %d",
+  "item.usefulsunflower.sunflower_flour": "Flour (Sunflower)",
+  "item.usefulsunflower.sunflower_bread": "Bread (Sunflower)",
+  "item.usefulsunflower.roasted_sunflower_seeds": "Roasted Sunflower Seeds",
+
+  "jei.usefulsunflower.category.squeezer": "Squeezer"
+}

@@ -1,0 +1,14 @@
+{
+  "minVersion": "0.8.5",
+  "compatibilityLevel": "JAVA_17",
+  "required": true,
+  "package": "de.canitzp.usefulsunflower.mixin",
+  "refmap": "mixins.usf.refmap.json",
+  "mixins": [
+    "BlockBehaviourMixin",
+    "TallFlowerBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

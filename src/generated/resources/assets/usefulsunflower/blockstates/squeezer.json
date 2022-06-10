@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "cycle=0": {
+      "model": "usefulsunflower:block/squeezer"
+    },
+    "cycle=1": {
+      "model": "usefulsunflower:block/squeezer_cycle1"
+    },
+    "cycle=2": {
+      "model": "usefulsunflower:block/squeezer_cycle2"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "usefulsunflower:blocks/squeezer",
+    "bottom": "usefulsunflower:blocks/squeezer_bottom",
+    "top": "usefulsunflower:blocks/squeezer_top"
+  }
+}

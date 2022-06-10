@@ -1,0 +1,17 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "predicate": {
+        "usefulsunflower:state": 0.0
+      },
+      "model": "usefulsunflower:item/seed_pouch_empty"
+    },
+    {
+      "predicate": {
+        "usefulsunflower:state": 1.0
+      },
+      "model": "usefulsunflower:item/seed_pouch_full"
+    }
+  ]
+}

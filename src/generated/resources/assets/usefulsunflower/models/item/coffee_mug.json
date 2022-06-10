@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "usefulsunflower:items/coffee_mug"
+  }
+}
