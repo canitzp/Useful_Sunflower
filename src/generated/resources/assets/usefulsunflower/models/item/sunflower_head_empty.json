@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "usefulsunflower:items/sunflower_head_empty"
+  }
+}

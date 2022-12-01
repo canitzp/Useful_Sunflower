@@ -1,0 +1,10 @@
+{
+  "type": "usefulsunflower:squeezer",
+  "seeds_necessary": 10000,
+  "ingredient": {
+    "item": "usefulsunflower:coffee_mug"
+  },
+  "result": {
+    "item": "usefulsunflower:mug_coffee_powder"
+  }
+}

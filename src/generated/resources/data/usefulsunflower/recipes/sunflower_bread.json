@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "usefulsunflower:sunflower_flour"
+  },
+  "result": "usefulsunflower:sunflower_bread",
+  "experience": 0.15,
+  "cookingtime": 200
+}

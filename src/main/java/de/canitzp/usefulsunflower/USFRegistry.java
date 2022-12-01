@@ -31,11 +31,13 @@ public class USFRegistry {
         public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 
         public static final RegistryObject<ItemSeedPouch> SEED_POUCH = ITEMS.register("seed_pouch", ItemSeedPouch::new);
+        public static final RegistryObject<Item> SUNFLOWER_STEM = ITEMS.register("sunflower_stem", () -> new Item(new Item.Properties().tab(USFTab.INSTANCE)));
+        public static final RegistryObject<Item> SUNFLOWER_HEAD_EMPTY = ITEMS.register("sunflower_head_empty", () -> new Item(new Item.Properties().tab(USFTab.INSTANCE)));
         public static final RegistryObject<Item> SUNFLOWER_OIL = ITEMS.register("sunflower_oil", () -> new Item(new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE).craftRemainder(Items.GLASS_BOTTLE)));
         public static final RegistryObject<Item> ROASTED_SUNFLOWER_SEEDS = ITEMS.register("roasted_sunflower_seeds", () -> new Item(new Item.Properties().tab(USFTab.INSTANCE).food(USFRegistry.FOOD_ROASTED_SUNFLOWER_SEEDS)));
         public static final RegistryObject<Item> SUNFLOWER_FLOUR = ITEMS.register("sunflower_flour", () -> new Item(new Item.Properties().tab(USFTab.INSTANCE)));
         public static final RegistryObject<Item> SUNFLOWER_BREAD = ITEMS.register("sunflower_bread", () -> new Item(new Item.Properties().food(Foods.BREAD).tab(USFTab.INSTANCE)));
-        public static final RegistryObject<Item> MUG = ITEMS.register("coffee_mug", () -> new Item(new Item.Properties().stacksTo(1).tab(USFTab.INSTANCE)));
+        public static final RegistryObject<Item> MUG = ITEMS.register("coffee_mug", () -> new Item(new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE)));
         public static final RegistryObject<Item> MUG_WITH_COFFEE_POWDER = ITEMS.register("mug_coffee_powder", () -> new Item(new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE)));
         public static final RegistryObject<Item> MUG_WITH_COLD_COFFEE = ITEMS.register("sunflower_coffee_cold", () -> new Item(new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE).food(FOOD_COFFEE_COLD)));
         public static final RegistryObject<Item> MUG_WITH_HOT_COFFEE = ITEMS.register("sunflower_coffee_hot", () -> new Item(new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE).food(FOOD_COFFEE_HOT)));

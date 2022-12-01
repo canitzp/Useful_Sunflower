@@ -80,12 +80,14 @@ public class ItemSeedPouch extends Item {
     private void onPlantClick(UseOnContext context, int storedSeeds){
         if(storedSeeds < SEED_CAPACITY){
             setStoredSeeds(context.getItemInHand(), storedSeeds + Mth.nextInt(context.getLevel().random, 100, 2000));
-            int sunflowerAge = context.getPlayer().isCrouching() ? 0 : Mth.nextInt(new Random(), 2, 3);
-            context.getLevel().setBlockAndUpdate(context.getClickedPos().below(), USFRegistry.USFBlocks.GROWING_SUNFLOWER_STEM.get().defaultBlockState().setValue(BlockGrowingSunflower.AGE, sunflowerAge));
             context.getLevel().removeBlock(context.getClickedPos(), false);
             if(context.getPlayer().isCrouching()){
-                Block.popResource(context.getLevel(), context.getClickedPos(), Items.APPLE.getDefaultInstance());
-                Block.popResource(context.getLevel(), context.getClickedPos(), Items.SUNFLOWER.getDefaultInstance());
+                context.getLevel().removeBlock(context.getClickedPos().below(), false);
+                Block.popResource(context.getLevel(), context.getClickedPos(), USFRegistry.USFItems.SUNFLOWER_HEAD_EMPTY.get().getDefaultInstance());
+                Block.popResource(context.getLevel(), context.getClickedPos(), USFRegistry.USFItems.SUNFLOWER_STEM.get().getDefaultInstance());
+            } else {
+                int sunflowerAge = context.getPlayer().isCrouching() ? 0 : Mth.nextInt(new Random(), 2, 3);
+                context.getLevel().setBlockAndUpdate(context.getClickedPos().below(), USFRegistry.USFBlocks.GROWING_SUNFLOWER_STEM.get().defaultBlockState().setValue(BlockGrowingSunflower.AGE, sunflowerAge));
             }
         } else {
             context.getPlayer().sendMessage(new TextComponent("Seed Pouch is full!"), context.getPlayer().getUUID());

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "usefulsunflower:sunflower_bread"
+    ]
+  },
+  "criteria": {
+    "has_sunflower_flour": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "usefulsunflower:sunflower_flour"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "usefulsunflower:sunflower_bread"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sunflower_flour",
+      "has_the_recipe"
+    ]
+  ]
+}

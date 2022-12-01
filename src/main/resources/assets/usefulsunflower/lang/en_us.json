@@ -10,9 +10,15 @@
   "item.usefulsunflower.seed_pouch": "Seed Pouch",
   "item.usefulsunflower.seed_pouch.desc.general": "Right click on Sunflowers to get the Seeds. Replants a new sunflower. Sneak to cut the whole plant.",
   "item.usefulsunflower.seed_pouch.desc.seeds_contained": "Seeds: %d",
+  "item.usefulsunflower.sunflower_stem": "Sunflower Stem",
+  "item.usefulsunflower.sunflower_head_empty": "Empty Sunflower Head",
   "item.usefulsunflower.sunflower_flour": "Flour (Sunflower)",
   "item.usefulsunflower.sunflower_bread": "Bread (Sunflower)",
   "item.usefulsunflower.roasted_sunflower_seeds": "Roasted Sunflower Seeds",
+  "item.usefulsunflower.coffee_mug": "Coffee Mug",
+  "item.usefulsunflower.mug_coffee_powder": "Coffee Mug with Powder",
+  "item.usefulsunflower.sunflower_coffee_cold": "Cold Sunflower Coffee",
+  "item.usefulsunflower.sunflower_coffee_hot": "Hot Sunflower Coffee",
 
   "jei.usefulsunflower.category.squeezer": "Squeezer"
 }

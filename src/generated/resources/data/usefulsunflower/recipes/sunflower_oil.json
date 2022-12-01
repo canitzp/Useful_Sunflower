@@ -1,0 +1,10 @@
+{
+  "type": "usefulsunflower:squeezer",
+  "seeds_necessary": 7500,
+  "ingredient": {
+    "item": "minecraft:glass_bottle"
+  },
+  "result": {
+    "item": "usefulsunflower:sunflower_oil"
+  }
+}
