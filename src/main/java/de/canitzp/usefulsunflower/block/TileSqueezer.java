@@ -1,35 +1,25 @@
 package de.canitzp.usefulsunflower.block;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import de.canitzp.usefulsunflower.USFRegistry;
 import de.canitzp.usefulsunflower.cap.CapabilitySeedContainer;
 import de.canitzp.usefulsunflower.cap.ISeedContainer;
-import de.canitzp.usefulsunflower.USFRegistry;
-import de.canitzp.usefulsunflower.UsefulSunflower;
 import de.canitzp.usefulsunflower.cap.SimpleSeedContainer;
 import de.canitzp.usefulsunflower.recipe.SqueezerRecipe;
-import net.minecraft.Util;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.Connection;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.util.datafix.fixes.References;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -47,7 +37,6 @@ public class TileSqueezer extends BlockEntity {
     public SimpleSeedContainer seedContainer = new SimpleSeedContainer(100_000);
     public SidedInvWrapperSqueezer[] wrapper = SidedInvWrapperSqueezer.createForAllSides(this, this.inv);
     public int clicksUntilConversion = 0;
-    //public int seedAmount = 0;
     public boolean isPowered = false;
     public ResourceLocation recipeId;
 
@@ -85,6 +74,7 @@ public class TileSqueezer extends BlockEntity {
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
         tag.put("inventory", this.inv.createTag());
         tag.putInt("clicks_until_conversion", this.clicksUntilConversion);
         tag.put(ISeedContainer.NBT_ROOT_KEY, this.seedContainer.serializeNBT());
