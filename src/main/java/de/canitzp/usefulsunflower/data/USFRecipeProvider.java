@@ -61,7 +61,8 @@ public class USFRecipeProvider extends RecipeProvider {
 
         SqueezerRecipeBuilder.create(USFRegistry.USFItems.SUNFLOWER_OIL.get().getDefaultInstance(), 7_500, Items.GLASS_BOTTLE.getDefaultInstance()).save(consumer);
         SqueezerRecipeBuilder.create(USFRegistry.USFItems.MUG_WITH_COFFEE_POWDER.get().getDefaultInstance(), 10_000, USFRegistry.USFItems.MUG.get().getDefaultInstance()).save(consumer);
-        //SqueezerRecipeBuilder.create(USFRegistry.USFItems.ROASTED_SUNFLOWER_SEEDS.getDefaultInstance(), 2_000).save(consumer); find new container mimicking plastic chips bag
+        SqueezerRecipeBuilder.create(USFRegistry.USFItems.ROASTED_SUNFLOWER_SEEDS.get().getDefaultInstance(), 2_000, Items.BOWL.getDefaultInstance()).save(consumer);
         SqueezerRecipeBuilder.create(USFRegistry.USFItems.SUNFLOWER_FLOUR.get().getDefaultInstance(), 10_000, new ItemStack(Items.PAPER, 3)).save(consumer);
+        SqueezerRecipeBuilder.create(Items.MILK_BUCKET.getDefaultInstance(), 15_000, Items.WATER_BUCKET.getDefaultInstance());
     }
 }

@@ -21,5 +21,6 @@ public class USFItemTagsProvider extends ItemTagsProvider {
     @Override
     protected void addTags() {
         this.tag(Tags.Items.DYES_GREEN).add(USFRegistry.USFItems.SUNFLOWER_HEAD_EMPTY.get());
+        this.tag(Tags.Items.SLIMEBALLS).add(USFRegistry.USFItems.SUNFLOWER_OIL.get());
     }
 }
