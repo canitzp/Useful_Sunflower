@@ -38,9 +38,9 @@ public class USFRegistry {
         public static final RegistryObject<Item> SUNFLOWER_FLOUR = ITEMS.register("sunflower_flour", () -> new Item(new Item.Properties().tab(USFTab.INSTANCE)));
         public static final RegistryObject<Item> SUNFLOWER_BREAD = ITEMS.register("sunflower_bread", () -> new Item(new Item.Properties().food(Foods.BREAD).tab(USFTab.INSTANCE)));
         public static final RegistryObject<Item> MUG = ITEMS.register("coffee_mug", () -> new Item(new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE)));
-        public static final RegistryObject<Item> MUG_WITH_COFFEE_POWDER = ITEMS.register("mug_coffee_powder", () -> new Item(new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE)));
-        public static final RegistryObject<Item> MUG_WITH_COLD_COFFEE = ITEMS.register("sunflower_coffee_cold", () -> new Item(new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE).food(FOOD_COFFEE_COLD)));
-        public static final RegistryObject<Item> MUG_WITH_HOT_COFFEE = ITEMS.register("sunflower_coffee_hot", () -> new Item(new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE).food(FOOD_COFFEE_HOT)));
+        public static final RegistryObject<Item> MUG_WITH_COFFEE_POWDER = ITEMS.register("mug_coffee_powder", () -> new ItemMugWithCoffee(ItemMugWithCoffee.State.POWDER, new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE)));
+        public static final RegistryObject<Item> MUG_WITH_COLD_COFFEE = ITEMS.register("sunflower_coffee_cold", () -> new ItemMugWithCoffee(ItemMugWithCoffee.State.COLD, new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE).food(FOOD_COFFEE_COLD)));
+        public static final RegistryObject<Item> MUG_WITH_HOT_COFFEE = ITEMS.register("sunflower_coffee_hot", () -> new ItemMugWithCoffee(ItemMugWithCoffee.State.HOT, new Item.Properties().stacksTo(16).tab(USFTab.INSTANCE).food(FOOD_COFFEE_HOT)));
     }
 
     public static class USFBlockItems {
