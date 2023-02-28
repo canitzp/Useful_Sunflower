@@ -1,8 +1,7 @@
 package de.canitzp.usefulsunflower;
 
-import de.canitzp.usefulsunflower.block.BlockGrowingSunflower;
-import de.canitzp.usefulsunflower.block.BlockSqueezer;
-import de.canitzp.usefulsunflower.block.TileSqueezer;
+import de.canitzp.usefulsunflower.block.*;
+import de.canitzp.usefulsunflower.item.ItemMugWithCoffee;
 import de.canitzp.usefulsunflower.item.ItemSeedPouch;
 import net.minecraft.Util;
 import net.minecraft.util.datafix.fixes.References;

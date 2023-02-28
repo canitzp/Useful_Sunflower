@@ -2,7 +2,6 @@ package de.canitzp.usefulsunflower.data;
 
 import de.canitzp.usefulsunflower.USFRegistry;
 import de.canitzp.usefulsunflower.UsefulSunflower;
-import de.canitzp.usefulsunflower.block.BlockSqueezer;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;

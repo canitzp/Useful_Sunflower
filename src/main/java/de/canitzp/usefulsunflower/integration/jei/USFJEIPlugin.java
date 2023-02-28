@@ -2,7 +2,6 @@ package de.canitzp.usefulsunflower.integration.jei;
 
 import de.canitzp.usefulsunflower.USFRegistry;
 import de.canitzp.usefulsunflower.UsefulSunflower;
-import de.canitzp.usefulsunflower.block.BlockSqueezer;
 import de.canitzp.usefulsunflower.recipe.SqueezerRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;

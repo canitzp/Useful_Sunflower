@@ -1,20 +1,17 @@
 package de.canitzp.usefulsunflower.data;
 
 import de.canitzp.usefulsunflower.USFRegistry;
-import de.canitzp.usefulsunflower.block.BlockSqueezer;
-import de.canitzp.usefulsunflower.item.ItemSeedPouch;
-import de.canitzp.usefulsunflower.recipe.SqueezerRecipe;
 import de.canitzp.usefulsunflower.recipe.SqueezerRecipeBuilder;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.*;
-import net.minecraft.tags.ItemTags;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeProvider;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.SmeltingRecipe;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ForgeItemTagsProvider;
 
 import java.util.function.Consumer;
 

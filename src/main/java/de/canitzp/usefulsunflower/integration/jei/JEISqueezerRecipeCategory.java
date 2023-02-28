@@ -3,7 +3,6 @@ package de.canitzp.usefulsunflower.integration.jei;
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.canitzp.usefulsunflower.USFRegistry;
 import de.canitzp.usefulsunflower.UsefulSunflower;
-import de.canitzp.usefulsunflower.block.BlockSqueezer;
 import de.canitzp.usefulsunflower.block.TileOverlay;
 import de.canitzp.usefulsunflower.block.TileSqueezer;
 import de.canitzp.usefulsunflower.recipe.SqueezerRecipe;

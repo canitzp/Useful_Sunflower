@@ -3,7 +3,6 @@ package de.canitzp.usefulsunflower.data;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import de.canitzp.usefulsunflower.USFRegistry;
-import de.canitzp.usefulsunflower.block.BlockSqueezer;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.data.loot.LootTableProvider;
