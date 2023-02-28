@@ -2,9 +2,7 @@ package de.canitzp.usefulsunflower;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import de.canitzp.usefulsunflower.block.BlockGrowingSunflower;
 import de.canitzp.usefulsunflower.block.TileOverlay;
-import de.canitzp.usefulsunflower.block.TileSqueezer;
 import de.canitzp.usefulsunflower.cap.CapabilitySeedContainer;
 import de.canitzp.usefulsunflower.item.ItemSeedPouch;
 import de.canitzp.usefulsunflower.recipe.SqueezerRecipeBuilder;
@@ -83,9 +81,7 @@ public class UsefulSunflower {
             if(event.getType() == RenderGameOverlayEvent.ElementType.TEXT){
                 HitResult hitResult = Minecraft.getInstance().hitResult;
                 if(hitResult instanceof BlockHitResult blockHitResult){
-                    if(Minecraft.getInstance().level.getBlockEntity(blockHitResult.getBlockPos()) instanceof TileSqueezer squeezer){
-                        TileOverlay.render(squeezer, event.getMatrixStack());
-                    }
+                    TileOverlay.renderOverlay(Minecraft.getInstance().level.getBlockEntity(blockHitResult.getBlockPos()), event.getMatrixStack());
                 }
             }
         }

@@ -1,6 +1,7 @@
 {
   "itemGroup.usefulsunflower": "Useful Sunflower",
 
+  "block.usefulsunflower.seed_container": "Seed bin",
   "block.usefulsunflower.squeezer": "Squeezer",
   "block.usefulsunflower.squeezer.desc": "Right-Click with Seed Pouch or Sunflower Head to add seeds. Crouch/Sneak + Right-Click to change the recipe.",
   "block.usefulsunflower.squeezer.overlay.seeds_remaining": "Seeds remaining: %d",
@@ -19,6 +20,8 @@
   "item.usefulsunflower.mug_coffee_powder": "Coffee Mug with Powder",
   "item.usefulsunflower.sunflower_coffee_cold": "Cold Sunflower Coffee",
   "item.usefulsunflower.sunflower_coffee_hot": "Hot Sunflower Coffee",
+
+  "overlay.usefulsunflower.seed_container_stored_seeds": "%s/%s",
 
   "jei.usefulsunflower.category.squeezer": "Squeezer"
 }

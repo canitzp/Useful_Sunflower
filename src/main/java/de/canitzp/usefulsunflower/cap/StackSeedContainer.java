@@ -56,7 +56,7 @@ public class StackSeedContainer implements ICapabilityProvider, ISeedContainer {
         if (!canPut()) {
             return 0;
         }
-        int seedsReceived = Math.min(this.getSeedContainerSize(), this.getSeedContainerSize() - this.getSeedsInsideContainer());
+        int seedsReceived = Math.min(amount, this.getSeedContainerSize() - this.getSeedsInsideContainer());
         if (!simulate){
             this.setSeedsInsideContainer(this.getSeedsInsideContainer() + seedsReceived);
         }

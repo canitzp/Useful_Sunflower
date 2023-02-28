@@ -8,7 +8,6 @@ public interface ISeedContainer {
     int getSeedContainerSize();
 
     int getSeedsInsideContainer();
-
     void setSeedsInsideContainer(int amount);
 
     int takeSeedsFromContainer(int amount, boolean simulate);

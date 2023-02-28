@@ -47,6 +47,7 @@ public class USFRegistry {
         public static final DeferredRegister<Item> BLOCK_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 
         public static final RegistryObject<BlockItem> SQUEEZER = BLOCK_ITEMS.register("squeezer", () -> new BlockItem(USFBlocks.SQUEEZER.get(), new Item.Properties().tab(USFTab.INSTANCE)));
+        public static final RegistryObject<BlockItem> SEED_CONTAINER = BLOCK_ITEMS.register("seed_container", () -> new BlockItem(USFBlocks.SEED_CONTAINER.get(), new Item.Properties().tab(USFTab.INSTANCE)));
     }
 
     public static class USFBlocks {
@@ -54,6 +55,8 @@ public class USFRegistry {
 
         public static final RegistryObject<BlockGrowingSunflower> GROWING_SUNFLOWER_STEM = BLOCKS.register("growing_sunflower_stem", BlockGrowingSunflower::new);
         public static final RegistryObject<BlockSqueezer> SQUEEZER = BLOCKS.register("squeezer", BlockSqueezer::new);
+
+        public static final RegistryObject<BlockSeedContainer> SEED_CONTAINER = BLOCKS.register("seed_container", BlockSeedContainer::new);
     }
 
     public static class USFBlockEntityTypes {
@@ -62,6 +65,10 @@ public class USFRegistry {
         public static final RegistryObject<BlockEntityType<TileSqueezer>> SQUEEZER = BLOCK_ENTITY_TYPES.register("squeezer", () -> BlockEntityType.Builder
                 .of(TileSqueezer::new, USFBlocks.SQUEEZER.get())
                 .build(Util.fetchChoiceType(References.BLOCK_ENTITY, "usefulsunflower:squeezer")));
+
+        public static final RegistryObject<BlockEntityType<TileSeedContainer>> SEED_CONTAINER = BLOCK_ENTITY_TYPES.register("seed_container", () -> BlockEntityType.Builder
+                .of(TileSeedContainer::new, USFBlocks.SEED_CONTAINER.get())
+                .build(Util.fetchChoiceType(References.BLOCK_ENTITY, "usefulsunflower:seed_container")));
     }
 
 }
