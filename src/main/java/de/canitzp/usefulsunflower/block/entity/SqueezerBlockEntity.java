@@ -1,6 +1,8 @@
-package de.canitzp.usefulsunflower.block;
+package de.canitzp.usefulsunflower.block.entity;
 
 import de.canitzp.usefulsunflower.USFRegistry;
+import de.canitzp.usefulsunflower.block.SqueezerBlock;
+import de.canitzp.usefulsunflower.container.SqueezerContainer;
 import de.canitzp.usefulsunflower.cap.CapabilitySeedContainer;
 import de.canitzp.usefulsunflower.cap.ISeedContainer;
 import de.canitzp.usefulsunflower.cap.SimpleSeedContainer;
@@ -27,20 +29,20 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class TileSqueezer extends BlockEntity {
+public class SqueezerBlockEntity extends BlockEntity {
 
     public static final int SLOT_INPUT_SEED_CONTAINER = 0;
     public static final int SLOT_INPUT_INGREDIENT = 1;
     public static final int SLOT_OUTPUT_RESULT = 2;
 
-    public ContainerSqueezer inv = new ContainerSqueezer();
+    public SqueezerContainer inv = new SqueezerContainer();
     public SimpleSeedContainer seedContainer = new SimpleSeedContainer(100_000);
-    public SidedInvWrapperSqueezer[] wrapper = SidedInvWrapperSqueezer.createForAllSides(this, this.inv);
+    public SqueezerSidedInvWrapper[] wrapper = SqueezerSidedInvWrapper.createForAllSides(this, this.inv);
     public int clicksUntilConversion = 0;
     public boolean isPowered = false;
     public ResourceLocation recipeId;
 
-    public TileSqueezer(BlockPos pos, BlockState state) {
+    public SqueezerBlockEntity(BlockPos pos, BlockState state) {
         super(USFRegistry.USFBlockEntityTypes.SQUEEZER.get(), pos, state);
     }
 
@@ -48,7 +50,7 @@ public class TileSqueezer extends BlockEntity {
     @Override
     public <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
         if(cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY){
-            SidedInvWrapperSqueezer wrapper = side != null ? this.wrapper[side.ordinal()] : new SidedInvWrapperSqueezer(this, this.inv, null);
+            SqueezerSidedInvWrapper wrapper = side != null ? this.wrapper[side.ordinal()] : new SqueezerSidedInvWrapper(this, this.inv, null);
             return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.orEmpty(cap, LazyOptional.of(() -> wrapper));
         }
         if(cap == CapabilitySeedContainer.SEED_CONTAINER){
@@ -245,9 +247,9 @@ public class TileSqueezer extends BlockEntity {
         this.clicksUntilConversion++;
 
         if(this.clicksUntilConversion % 2 == 0){
-            this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(BlockSqueezer.CYCLE, 2));
+            this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(SqueezerBlock.CYCLE, 2));
         } else {
-            this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(BlockSqueezer.CYCLE, 1));
+            this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(SqueezerBlock.CYCLE, 1));
         }
         if(this.clicksUntilConversion >= 10){
             // convert stored seeds to oil
@@ -261,7 +263,7 @@ public class TileSqueezer extends BlockEntity {
                 this.inv.getItem(SLOT_OUTPUT_RESULT).grow(currentRecipe.getResultItem().getCount());
             }
 
-            this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(BlockSqueezer.CYCLE, 0));
+            this.getLevel().setBlockAndUpdate(this.getBlockPos(), this.getBlockState().setValue(SqueezerBlock.CYCLE, 0));
         }
         return true;
     }

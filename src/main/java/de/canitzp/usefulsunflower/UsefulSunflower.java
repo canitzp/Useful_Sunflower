@@ -2,9 +2,9 @@ package de.canitzp.usefulsunflower;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import de.canitzp.usefulsunflower.block.TileOverlay;
+import de.canitzp.usefulsunflower.client.OverlayRenderer;
 import de.canitzp.usefulsunflower.cap.CapabilitySeedContainer;
-import de.canitzp.usefulsunflower.item.ItemSeedPouch;
+import de.canitzp.usefulsunflower.item.SeedPouchItem;
 import de.canitzp.usefulsunflower.recipe.SqueezerRecipeBuilder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -65,7 +65,7 @@ public class UsefulSunflower {
             ItemBlockRenderTypes.setRenderLayer(USFRegistry.USFBlocks.GROWING_SUNFLOWER_STEM.get(), RenderType.cutoutMipped());
 
             ItemProperties.register(USFRegistry.USFItems.SEED_POUCH.get(), new ResourceLocation(MODID, "state"), (stack, level, entity, i) -> {
-                if(ItemSeedPouch.getStoredSeeds(stack) > 0){
+                if(SeedPouchItem.getStoredSeeds(stack) > 0){
                     return 1;
                 } else {
                     return 0;
@@ -81,7 +81,7 @@ public class UsefulSunflower {
             if(event.getType() == RenderGameOverlayEvent.ElementType.TEXT){
                 HitResult hitResult = Minecraft.getInstance().hitResult;
                 if(hitResult instanceof BlockHitResult blockHitResult){
-                    TileOverlay.renderOverlay(Minecraft.getInstance().level.getBlockEntity(blockHitResult.getBlockPos()), event.getMatrixStack());
+                    OverlayRenderer.renderOverlay(Minecraft.getInstance().level.getBlockEntity(blockHitResult.getBlockPos()), event.getMatrixStack());
                 }
             }
         }

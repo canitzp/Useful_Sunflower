@@ -19,11 +19,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
-public class ItemMugWithCoffee extends Item {
+public class MugWithCoffeeItem extends Item {
 
     private final State state;
 
-    public ItemMugWithCoffee(State state, Properties properties) {
+    public MugWithCoffeeItem(State state, Properties properties) {
         super(properties);
         this.state = state;
     }

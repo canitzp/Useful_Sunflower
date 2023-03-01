@@ -2,8 +2,8 @@ package de.canitzp.usefulsunflower.data;
 
 import de.canitzp.usefulsunflower.USFRegistry;
 import de.canitzp.usefulsunflower.UsefulSunflower;
-import de.canitzp.usefulsunflower.block.BlockGrowingSunflower;
-import de.canitzp.usefulsunflower.block.BlockSqueezer;
+import de.canitzp.usefulsunflower.block.GrowingSunflowerBlock;
+import de.canitzp.usefulsunflower.block.SqueezerBlock;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
@@ -21,15 +21,15 @@ public class USFBlockstateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         super.getVariantBuilder(USFRegistry.USFBlocks.GROWING_SUNFLOWER_STEM.get())
-                .partialState().with(BlockGrowingSunflower.AGE, 0).addModels(new ConfiguredModel(stem("growing_sunflower_stem0", 0, mcLoc("block/sunflower_bottom"))))
-                .partialState().with(BlockGrowingSunflower.AGE, 1).addModels(new ConfiguredModel(stem("growing_sunflower_stem1", 2, mcLoc("block/sunflower_bottom"))))
-                .partialState().with(BlockGrowingSunflower.AGE, 2).addModels(new ConfiguredModel(stem("growing_sunflower_stem2", 4, mcLoc("block/sunflower_bottom"))))
-                .partialState().with(BlockGrowingSunflower.AGE, 3).addModels(new ConfiguredModel(stem("growing_sunflower_stem3", 6, mcLoc("block/sunflower_bottom"))));
+                .partialState().with(GrowingSunflowerBlock.AGE, 0).addModels(new ConfiguredModel(stem("growing_sunflower_stem0", 0, mcLoc("block/sunflower_bottom"))))
+                .partialState().with(GrowingSunflowerBlock.AGE, 1).addModels(new ConfiguredModel(stem("growing_sunflower_stem1", 2, mcLoc("block/sunflower_bottom"))))
+                .partialState().with(GrowingSunflowerBlock.AGE, 2).addModels(new ConfiguredModel(stem("growing_sunflower_stem2", 4, mcLoc("block/sunflower_bottom"))))
+                .partialState().with(GrowingSunflowerBlock.AGE, 3).addModels(new ConfiguredModel(stem("growing_sunflower_stem3", 6, mcLoc("block/sunflower_bottom"))));
 
         super.getVariantBuilder(USFRegistry.USFBlocks.SQUEEZER.get())
-                .partialState().with(BlockSqueezer.CYCLE, 0).addModels(new ConfiguredModel(cubeBottomTop("squeezer", 0)))
-                .partialState().with(BlockSqueezer.CYCLE, 1).addModels(new ConfiguredModel(cubeBottomTop("squeezer", 1)))
-                .partialState().with(BlockSqueezer.CYCLE, 2).addModels(new ConfiguredModel(cubeBottomTop("squeezer", 2)));
+                .partialState().with(SqueezerBlock.CYCLE, 0).addModels(new ConfiguredModel(cubeBottomTop("squeezer", 0)))
+                .partialState().with(SqueezerBlock.CYCLE, 1).addModels(new ConfiguredModel(cubeBottomTop("squeezer", 1)))
+                .partialState().with(SqueezerBlock.CYCLE, 2).addModels(new ConfiguredModel(cubeBottomTop("squeezer", 2)));
     }
 
     public BlockModelBuilder stem(String name, int stemGrowthLevel, ResourceLocation crop) {

@@ -1,4 +1,4 @@
-package de.canitzp.usefulsunflower.block;
+package de.canitzp.usefulsunflower.block.entity;
 
 import net.minecraft.core.Direction;
 import net.minecraft.world.WorldlyContainer;
@@ -7,11 +7,11 @@ import net.minecraftforge.items.wrapper.SidedInvWrapper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class SidedInvWrapperSqueezer extends SidedInvWrapper {
+public class SqueezerSidedInvWrapper extends SidedInvWrapper {
 
-    private final TileSqueezer squeezer;
+    private final SqueezerBlockEntity squeezer;
 
-    public SidedInvWrapperSqueezer(TileSqueezer squeezer, WorldlyContainer inv, @Nullable Direction side) {
+    public SqueezerSidedInvWrapper(SqueezerBlockEntity squeezer, WorldlyContainer inv, @Nullable Direction side) {
         super(inv, side);
         this.squeezer = squeezer;
     }
@@ -26,10 +26,10 @@ public class SidedInvWrapperSqueezer extends SidedInvWrapper {
         return itemStack;
     }
 
-    public static SidedInvWrapperSqueezer[] createForAllSides(TileSqueezer squeezer, WorldlyContainer inv){
-        SidedInvWrapperSqueezer[] ary = new SidedInvWrapperSqueezer[Direction.values().length];
+    public static SqueezerSidedInvWrapper[] createForAllSides(SqueezerBlockEntity squeezer, WorldlyContainer inv){
+        SqueezerSidedInvWrapper[] ary = new SqueezerSidedInvWrapper[Direction.values().length];
         for (Direction side : Direction.values()) {
-            ary[side.ordinal()] = new SidedInvWrapperSqueezer(squeezer, inv, side);
+            ary[side.ordinal()] = new SqueezerSidedInvWrapper(squeezer, inv, side);
         }
         return ary;
     }

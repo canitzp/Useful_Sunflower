@@ -2,16 +2,16 @@ package de.canitzp.usefulsunflower.integration.jei;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.canitzp.usefulsunflower.USFRegistry;
-import de.canitzp.usefulsunflower.UsefulSunflower;
-import de.canitzp.usefulsunflower.block.TileOverlay;
-import de.canitzp.usefulsunflower.block.TileSqueezer;
+import de.canitzp.usefulsunflower.client.OverlayRenderer;
 import de.canitzp.usefulsunflower.recipe.SqueezerRecipe;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.gui.IRecipeLayout;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.ingredient.IGuiItemStackGroup;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
-import mezz.jei.api.ingredients.IIngredients;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
@@ -22,7 +22,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class JEISqueezerRecipeCategory implements IRecipeCategory<SqueezerRecipe> {
 
-    public static final ResourceLocation UID = new ResourceLocation(UsefulSunflower.MODID, "squeezer");
     private final IGuiHelper guiHelper;
     private final Component localizedName = new TranslatableComponent("jei.usefulsunflower.category.squeezer");
     private final IDrawable background;
@@ -30,18 +29,13 @@ public class JEISqueezerRecipeCategory implements IRecipeCategory<SqueezerRecipe
 
     public JEISqueezerRecipeCategory(IGuiHelper guiHelper) {
         this.guiHelper = guiHelper;
-        this.background = guiHelper.createDrawable(TileOverlay.TEXTURE, 4, 4, 138, 29);
-        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM, USFRegistry.USFBlockItems.SQUEEZER.get().getDefaultInstance());
+        this.background = guiHelper.createDrawable(OverlayRenderer.TEXTURE, 4, 4, 138, 29);
+        this.icon = guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, USFRegistry.USFBlockItems.SQUEEZER.get().getDefaultInstance());
     }
 
     @Override
-    public @NotNull ResourceLocation getUid() {
-        return UID;
-    }
-
-    @Override
-    public @NotNull Class<? extends SqueezerRecipe> getRecipeClass() {
-        return SqueezerRecipe.class;
+    public RecipeType<SqueezerRecipe> getRecipeType() {
+        return USFJEIPlugin.SQUEEZER;
     }
 
     @Override
@@ -60,24 +54,27 @@ public class JEISqueezerRecipeCategory implements IRecipeCategory<SqueezerRecipe
     }
 
     @Override
-    public void setIngredients(@NotNull SqueezerRecipe recipe, @NotNull IIngredients ingredients) {
-        ingredients.setInput(VanillaTypes.ITEM, recipe.ingredient());
-        ingredients.setOutput(VanillaTypes.ITEM, recipe.getResultItem());
+    public void setRecipe(IRecipeLayoutBuilder builder, SqueezerRecipe recipe, IFocusGroup focuses) {
+        builder.addSlot(RecipeIngredientRole.INPUT, 2, 12).addItemStack(recipe.ingredient());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 121, 12).addItemStack(recipe.result());
     }
 
     @Override
-    public void setRecipe(@NotNull IRecipeLayout recipeLayout, @NotNull SqueezerRecipe recipe, @NotNull IIngredients ingredients) {
-        IGuiItemStackGroup guiItemStacks = recipeLayout.getItemStacks();
-
-        guiItemStacks.init(TileSqueezer.SLOT_INPUT_INGREDIENT, true, 1, 11);
-        guiItemStacks.init(TileSqueezer.SLOT_OUTPUT_RESULT, false, 120, 11);
-
-        guiItemStacks.set(ingredients);
-    }
-
-    @Override
-    public void draw(SqueezerRecipe recipe, PoseStack stack, double mouseX, double mouseY) {
+    public void draw(SqueezerRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
         Font font = Minecraft.getInstance().font;
         font.draw(stack, new TranslatableComponent("Usage: ").append(new TranslatableComponent(String.valueOf(recipe.seedsNecessary()))), 0, 0, 0xFF808080);
     }
+
+    @Deprecated
+    @Override
+    public ResourceLocation getUid() {
+        return null;
+    }
+
+    @Deprecated
+    @Override
+    public Class<? extends SqueezerRecipe> getRecipeClass() {
+        return null;
+    }
+
 }

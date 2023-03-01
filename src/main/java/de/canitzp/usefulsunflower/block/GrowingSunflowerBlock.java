@@ -27,12 +27,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
-public class BlockGrowingSunflower extends BushBlock implements BonemealableBlock {
+public class GrowingSunflowerBlock extends BushBlock implements BonemealableBlock {
 
     public static final IntegerProperty AGE = IntegerProperty.create("age", 0, 3);
     public static final double[] SIZE_BY_AGE = new double[]{1D, 5D, 9D, 13D};
 
-    public BlockGrowingSunflower() {
+    public GrowingSunflowerBlock() {
         super(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
         this.registerDefaultState(this.getStateDefinition().any().setValue(AGE, 0));
     }

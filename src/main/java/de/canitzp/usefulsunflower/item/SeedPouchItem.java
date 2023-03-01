@@ -2,7 +2,7 @@ package de.canitzp.usefulsunflower.item;
 
 import de.canitzp.usefulsunflower.USFRegistry;
 import de.canitzp.usefulsunflower.USFTab;
-import de.canitzp.usefulsunflower.block.BlockGrowingSunflower;
+import de.canitzp.usefulsunflower.block.GrowingSunflowerBlock;
 import de.canitzp.usefulsunflower.cap.CapabilitySeedContainer;
 import de.canitzp.usefulsunflower.cap.ISeedContainer;
 import de.canitzp.usefulsunflower.cap.SimpleSeedContainer;
@@ -36,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class ItemSeedPouch extends Item {
+public class SeedPouchItem extends Item {
 
     public static final int SEED_CAPACITY = 100_000;
 
@@ -62,7 +62,7 @@ public class ItemSeedPouch extends Item {
         }
     }
 
-    public ItemSeedPouch() {
+    public SeedPouchItem() {
         super(new Properties().stacksTo(1).tab(USFTab.INSTANCE));
     }
 
@@ -76,7 +76,7 @@ public class ItemSeedPouch extends Item {
 
     @Override
     public boolean isFoil(ItemStack stack) {
-        return ItemSeedPouch.isInfinite(stack) || super.isFoil(stack);
+        return SeedPouchItem.isInfinite(stack) || super.isFoil(stack);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class ItemSeedPouch extends Item {
             return super.useOn(context);
         }
         BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-        int storedSeeds = ItemSeedPouch.getStoredSeeds(context.getItemInHand());
+        int storedSeeds = SeedPouchItem.getStoredSeeds(context.getItemInHand());
         if(state.is(Blocks.SUNFLOWER) && state.getValue(DoublePlantBlock.HALF) == DoubleBlockHalf.UPPER){
             // plant to seeds anr optionally greenery
             if(context.getPlayer().mayInteract(context.getLevel(), context.getClickedPos()) && context.getPlayer().mayInteract(context.getLevel(), context.getClickedPos().below())){
@@ -98,7 +98,7 @@ public class ItemSeedPouch extends Item {
         } else if(storedSeeds > 0 && USFRegistry.USFBlocks.GROWING_SUNFLOWER_STEM.get().placeAt(context, context.getLevel(), context.getClickedPos(), context.getClickedFace())){
             // seed pouch plant sunflower
             if(!context.getPlayer().isCreative()){
-                ItemSeedPouch.setStoredSeeds(context.getItemInHand(), storedSeeds - 1);
+                SeedPouchItem.setStoredSeeds(context.getItemInHand(), storedSeeds - 1);
             }
             return InteractionResult.SUCCESS;
         }
@@ -119,7 +119,7 @@ public class ItemSeedPouch extends Item {
             Block.popResource(context.getLevel(), context.getClickedPos(), USFRegistry.USFItems.SUNFLOWER_STEM.get().getDefaultInstance());
         } else {
             int sunflowerAge = context.getPlayer().isCrouching() ? 0 : Mth.nextInt(new Random(), 2, 3);
-            context.getLevel().setBlockAndUpdate(context.getClickedPos().below(), USFRegistry.USFBlocks.GROWING_SUNFLOWER_STEM.get().defaultBlockState().setValue(BlockGrowingSunflower.AGE, sunflowerAge));
+            context.getLevel().setBlockAndUpdate(context.getClickedPos().below(), USFRegistry.USFBlocks.GROWING_SUNFLOWER_STEM.get().defaultBlockState().setValue(GrowingSunflowerBlock.AGE, sunflowerAge));
         }
     }
 

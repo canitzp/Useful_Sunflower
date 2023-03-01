@@ -1,5 +1,6 @@
 package de.canitzp.usefulsunflower.block;
 
+import de.canitzp.usefulsunflower.block.entity.SqueezerBlockEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -26,11 +27,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class BlockSqueezer extends BaseEntityBlock {
+public class SqueezerBlock extends BaseEntityBlock {
 
     public static final IntegerProperty CYCLE = IntegerProperty.create("cycle", 0, 2);
 
-    public BlockSqueezer() {
+    public SqueezerBlock() {
         super(Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.5F));
         this.registerDefaultState(this.getStateDefinition().any().setValue(CYCLE, 0));
     }
@@ -43,7 +44,7 @@ public class BlockSqueezer extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state) {
-        return new TileSqueezer(pos, state);
+        return new SqueezerBlockEntity(pos, state);
     }
 
     @Override
@@ -57,7 +58,7 @@ public class BlockSqueezer extends BaseEntityBlock {
             return InteractionResult.SUCCESS;
         }
         ItemStack stack = player.getItemInHand(hand);
-        if(level.getBlockEntity(pos) instanceof TileSqueezer squeezer){
+        if(level.getBlockEntity(pos) instanceof SqueezerBlockEntity squeezer){
             return squeezer.onClick(player, hand, stack, state);
         }
 
@@ -70,7 +71,7 @@ public class BlockSqueezer extends BaseEntityBlock {
             return;
         }
 
-        if(level.getBlockEntity(pos) instanceof TileSqueezer squeezer){
+        if(level.getBlockEntity(pos) instanceof SqueezerBlockEntity squeezer){
             squeezer.setRedstoneState(level.hasNeighborSignal(pos));
         }
     }
@@ -84,7 +85,7 @@ public class BlockSqueezer extends BaseEntityBlock {
     public void onRemove(BlockState oldState, Level level, BlockPos pos, BlockState newState, boolean p_60519_) {
         if (!oldState.is(newState.getBlock())) {
             BlockEntity blockentity = level.getBlockEntity(pos);
-            if (blockentity instanceof TileSqueezer squeezer) {
+            if (blockentity instanceof SqueezerBlockEntity squeezer) {
                 Containers.dropContents(level, pos, squeezer.inv);
                 level.updateNeighbourForOutputSignal(pos, this);
             }

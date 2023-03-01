@@ -1,4 +1,4 @@
-package de.canitzp.usefulsunflower.block;
+package de.canitzp.usefulsunflower.block.entity;
 
 import de.canitzp.usefulsunflower.USFRegistry;
 import de.canitzp.usefulsunflower.cap.CapabilitySeedContainer;
@@ -28,11 +28,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class TileSeedContainer extends BlockEntity {
+public class SeedBinBlockEntity extends BlockEntity {
 
     private boolean needsToSync = false;
 
-    public TileSeedContainer(BlockPos pos, BlockState state) {
+    public SeedBinBlockEntity(BlockPos pos, BlockState state) {
         super(USFRegistry.USFBlockEntityTypes.SEED_CONTAINER.get(), pos, state);
     }
 
@@ -96,14 +96,14 @@ public class TileSeedContainer extends BlockEntity {
                     System.out.println("Outo: " + this.seedContainer.getSeedsInsideContainer());
                     this.seedContainer.takeSeedsFromContainer(otherSeedContainer.putSeedsIntoContainer(this.seedContainer.takeSeedsFromContainer(Integer.MAX_VALUE, true), false), false);
                 }
-                TileSeedContainer.this.sync();
+                SeedBinBlockEntity.this.sync();
             });
         }
         System.out.println("Content: " + this.seedContainer.getSeedsInsideContainer());
         return InteractionResult.SUCCESS;
     }
 
-    public static void serverTick(Level level, BlockPos pos, BlockState state, @NotNull TileSeedContainer tile) {
+    public static void serverTick(Level level, BlockPos pos, BlockState state, @NotNull SeedBinBlockEntity tile) {
         if(tile.needsToSync && level.getGameTime() % 10 == 1){
             tile.sync();
             tile.needsToSync = false;

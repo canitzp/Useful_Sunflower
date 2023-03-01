@@ -5,6 +5,7 @@ import de.canitzp.usefulsunflower.UsefulSunflower;
 import de.canitzp.usefulsunflower.recipe.SqueezerRecipe;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -16,6 +17,8 @@ import java.util.List;
 
 @JeiPlugin
 public class USFJEIPlugin implements IModPlugin {
+
+    public static final RecipeType<SqueezerRecipe> SQUEEZER = RecipeType.create(UsefulSunflower.MODID, "squeezer", SqueezerRecipe.class);
 
     @Override
     public @NotNull ResourceLocation getPluginUid() {
@@ -30,11 +33,11 @@ public class USFJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         List<SqueezerRecipe> squeezerRecipes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(SqueezerRecipe.TYPE);
-        registration.addRecipes(squeezerRecipes, JEISqueezerRecipeCategory.UID);
+        registration.addRecipes(SQUEEZER, squeezerRecipes);
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(USFRegistry.USFBlockItems.SQUEEZER.get().getDefaultInstance(), JEISqueezerRecipeCategory.UID);
+        registration.addRecipeCatalyst(USFRegistry.USFBlockItems.SQUEEZER.get().getDefaultInstance(), SQUEEZER);
     }
 }

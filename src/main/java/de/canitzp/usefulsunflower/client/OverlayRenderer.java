@@ -1,8 +1,9 @@
-package de.canitzp.usefulsunflower.block;
+package de.canitzp.usefulsunflower.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import de.canitzp.usefulsunflower.UsefulSunflower;
+import de.canitzp.usefulsunflower.block.entity.SqueezerBlockEntity;
 import de.canitzp.usefulsunflower.cap.CapabilitySeedContainer;
 import de.canitzp.usefulsunflower.cap.ISeedContainer;
 import de.canitzp.usefulsunflower.recipe.SqueezerRecipe;
@@ -12,7 +13,7 @@ import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
-public class TileOverlay {
+public class OverlayRenderer {
 
     public static final ResourceLocation TEXTURE = new ResourceLocation(UsefulSunflower.MODID, "textures/overlay.png");
     public static final int SQUEEZER_TEXTURE_WIDTH = 146;
@@ -22,16 +23,16 @@ public class TileOverlay {
         if(tile == null){
             return;
         }
-        if(tile instanceof TileSqueezer){
-            TileOverlay.renderSqueezer(((TileSqueezer) tile), matrix);
+        if(tile instanceof SqueezerBlockEntity){
+            OverlayRenderer.renderSqueezer(((SqueezerBlockEntity) tile), matrix);
         } else {
             tile.getCapability(CapabilitySeedContainer.SEED_CONTAINER).ifPresent(seedContainer -> {
-                TileOverlay.renderSeedContainer(seedContainer, matrix);
+                OverlayRenderer.renderSeedContainer(seedContainer, matrix);
             });
         }
     }
 
-    private static void renderSqueezer(TileSqueezer tile, PoseStack matrix){
+    private static void renderSqueezer(SqueezerBlockEntity tile, PoseStack matrix){
         matrix.pushPose();
         RenderSystem.enableBlend();
 
@@ -52,9 +53,9 @@ public class TileOverlay {
         Minecraft.getInstance().font.draw(matrix, new TranslatableComponent("block.usefulsunflower.squeezer.overlay.seeds_remaining", tile.seedContainer.getSeedsInsideContainer()), xPos + 5, yPos + 5, 0x80000000);
 
         // display ingredient
-        if(!tile.inv.getItem(TileSqueezer.SLOT_INPUT_INGREDIENT).isEmpty()){
-            Minecraft.getInstance().getItemRenderer().renderGuiItem(tile.inv.getItem(TileSqueezer.SLOT_INPUT_INGREDIENT), (int) xPos + 6, (int) yPos + 16);
-            Minecraft.getInstance().getItemRenderer().renderGuiItemDecorations(Minecraft.getInstance().font , tile.inv.getItem(TileSqueezer.SLOT_INPUT_INGREDIENT), (int) xPos + 6, (int) yPos + 16);
+        if(!tile.inv.getItem(SqueezerBlockEntity.SLOT_INPUT_INGREDIENT).isEmpty()){
+            Minecraft.getInstance().getItemRenderer().renderGuiItem(tile.inv.getItem(SqueezerBlockEntity.SLOT_INPUT_INGREDIENT), (int) xPos + 6, (int) yPos + 16);
+            Minecraft.getInstance().getItemRenderer().renderGuiItemDecorations(Minecraft.getInstance().font , tile.inv.getItem(SqueezerBlockEntity.SLOT_INPUT_INGREDIENT), (int) xPos + 6, (int) yPos + 16);
         }
 
         // currently creating and needed seeds
